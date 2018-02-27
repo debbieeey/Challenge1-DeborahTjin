@@ -57,6 +57,7 @@ body {
   background-color: #212121;
   height: 50px;
   color: #fff;
+  text-align: center;
 }
 .title {
 	text-align: center;
@@ -87,6 +88,9 @@ canvas {
 	text-align: center;
 }
 
+.grid-icon {
+  width: 20%;
+}
 
 /*mobile scherm*/
 @media only screen and (max-width: 320px) {

@@ -13,7 +13,7 @@
 
 	<body>
 		
-			<div id="mySidenav" class="sidenav">
+	<!-- 		<div id="mySidenav" class="sidenav">
 			  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			  <a href="#">Dashboard</a>
 			  <a href="#">Over SpaceX</a>
@@ -21,19 +21,37 @@
 			</div>
 
 			<div class="navBar">
-				<!-- Use any element to open the sidenav -->
 				<span onclick="openNav()">Menu</span>
-			</div>
+			</div> -->
 			
+			<div class="navBar">
+				SpaceX
+			</div>
 
 			<h2>
 				Dashboard
 			</h2>
 			<div class="grid-container">
-				<div class="grid-item">Huidige Snelheid</div>
-				<div class="grid-item">Huidige Zwaartekracht</div>
-				<div class="grid-item">Huidige Brandstof</div>
-				<div class="grid-item">Huidige Voorraad</div>
+				<div class="grid-item">
+					<img class="grid-icon" src="img/rocket.png" alt="snelheid">
+					<div id="snelheid">100 km/u</div>
+					Huidige Snelheid
+				</div>
+				<div class="grid-item">
+					<img class="grid-icon" src="img/gravity.png" alt="zwaartekracht">
+					<div id="zwaartekracht">100 km/u</div>
+					Huidige Zwaartekracht
+				</div>
+				<div class="grid-item">
+					<img class="grid-icon" src="img/fuel.png" alt="brandstof">
+					<div id="brandstof">1000 liter</div>
+					Huidige Brandstof
+				</div>
+				<div class="grid-item">
+					<img class="grid-icon" src="img/food.png" alt="voorraad voedsel/water">
+					<div id="voorraad">1000 blikken, 1000 liter</div>
+					Huidige Voorraad
+				</div>
 			</div>
 
 			<div class="graphic-container">
