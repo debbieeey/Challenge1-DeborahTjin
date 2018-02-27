@@ -1,4 +1,4 @@
 # Challenge1-DeborahTjin
 
-Hoi, dit is de eerste upload van challenge 1
+Hoi, hier kan je mijn dashboard voor SpaceX vinden
 [hier](https://debbieeey.github.io/Challenge1-DeborahTjin/)
