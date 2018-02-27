@@ -11,80 +11,197 @@ function closeNav() {
     document.getElementById("wrapper").style.marginLeft = "0";
 }
 
-// pie chart
+// ----------------------------------------
+
+//voorraad-pie chart
 var randomScalingFactor = function() {
-			        return Math.round(Math.random() * 100);
-			    };
+        return Math.round(Math.random() * 100);
+    };
 
-			    var config = {
-			        type: 'pie',
-			        data: {
-			            datasets: [{
-			                data: [
-			                    randomScalingFactor(),
-			                    randomScalingFactor(),
-			                    randomScalingFactor(),
-			                    randomScalingFactor(),
-			                    randomScalingFactor(),
-			                ],
-			                backgroundColor: [
-			                    window.chartColors.red,
-			                    window.chartColors.orange,
-			                    window.chartColors.yellow,
-			                    window.chartColors.green,
-			                    window.chartColors.blue,
-			                ],
-			                label: 'Dataset 1'
-			            }],
-			            labels: [
-			                "Red",
-			                "Orange",
-			                "Yellow",
-			                "Green",
-			                "Blue"
-			            ]
-			        },
-			        options: {
-			            responsive: true
-			        }
-			    };
+    var pieData = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                ],
+                backgroundColor: [
+                    window.chartColors.orange,
+                    window.chartColors.green,
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                "Eten",
+                "Water"
+            ]
+        },
+        options: {
+            responsive: true,
+        }
+    };
 
-			    window.onload = function() {
-			        var ctx = document.getElementById("chart-area").getContext("2d");
-			        window.myPie = new Chart(ctx, config);
-			    };
 
-			    document.getElementById('randomizeData').addEventListener('click', function() {
-			        config.data.datasets.forEach(function(dataset) {
-			            dataset.data = dataset.data.map(function() {
-			                return randomScalingFactor();
-			            });
-			        });
+//brandstof-line chart
+var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var lineData = {
+            type: 'line',
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "My First dataset",
+                    backgroundColor: window.chartColors.blue,
+                    borderColor: window.chartColors.blue,
+                    data: [
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor()
+                    ],
+                    fill: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                title:{
+                    display:true,
+                    text:''
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Month'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Value'
+                        }
+                    }]
+                }
+            }
+        };
 
-			        window.myPie.update();
-			    });
+//zwaartekracht-bar chart
+       var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var color = Chart.helpers.color;
+        var barChartData = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [{
+                label: 'Dataset 1',
+                backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+                borderColor: window.chartColors.red,
+                borderWidth: 1,
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ]
+            }]
+        };
 
-			    var colorNames = Object.keys(window.chartColors);
-			    document.getElementById('addDataset').addEventListener('click', function() {
-			        var newDataset = {
-			            backgroundColor: [],
-			            data: [],
-			            label: 'New dataset ' + config.data.datasets.length,
-			        };
+//brandstof - area chart
+var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var areaData = {
+            type: 'line',
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "My Third dataset",
+                    borderColor: window.chartColors.green,
+                    backgroundColor: window.chartColors.green,
+                    data: [
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor()
+                    ], 
+                }]
+            },
+            options: {
+                responsive: true,
+                title:{
+                    display:true,
+                    text:""
+                },
+                tooltips: {
+                    mode: 'index',
+                },
+                hover: {
+                    mode: 'index'
+                },
+                scales: {
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Month'
+                        }
+                    }],
+                    yAxes: [{
+                        stacked: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Value'
+                        }
+                    }]
+                }
+            }
+        };
 
-			        for (var index = 0; index < config.data.labels.length; ++index) {
-			            newDataset.data.push(randomScalingFactor());
 
-			            var colorName = colorNames[index % colorNames.length];;
-			            var newColor = window.chartColors[colorName];
-			            newDataset.backgroundColor.push(newColor);
-			        }
+//FUNCTIES AANROEPEN
+  window.onload = function() {
+            var barData = document.getElementById("chart2").getContext("2d");
+            window.myBar = new Chart(barData, {
+                type: 'bar',
+                data: barChartData,
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: ''
+                    }
+                }
+            });
 
-			        config.data.datasets.push(newDataset);
-			        window.myPie.update();
-			    });
+            var ctx = document.getElementById("chart3").getContext("2d");
+            window.myLine = new Chart(ctx, lineData);
 
-			    document.getElementById('removeDataset').addEventListener('click', function() {
-			        config.data.datasets.splice(0, 1);
-			        window.myPie.update();
-			    });
+            var ctx = document.getElementById("chart4").getContext("2d");
+            window.myPie = new Chart(ctx, pieData);
+
+            var ctx = document.getElementById("chart1").getContext("2d");
+            window.myLine = new Chart(ctx, areaData);
+        };
+
+
+
+      
+
+ 
