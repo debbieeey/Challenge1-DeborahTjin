@@ -31,45 +31,53 @@
 			<h2>
 				Dashboard
 			</h2>
-			<div class="grid-container">
-				<div class="grid-item">
-					<img class="grid-icon" src="img/rocket.png" alt="snelheid">
+			<div class="gridContainer">
+				<div class="gridItem">
+					<img class="gridIcon" src="img/rocket.png" alt="snelheid">
 					<div id="snelheid">100 km/u</div>
 					Huidige Snelheid
 				</div>
-				<div class="grid-item">
-					<img class="grid-icon" src="img/gravity.png" alt="zwaartekracht">
+				<div class="gridItem">
+					<img class="gridIcon" src="img/gravity.png" alt="zwaartekracht">
 					<div id="zwaartekracht">100 km/u</div>
 					Huidige Zwaartekracht
 				</div>
-				<div class="grid-item">
-					<img class="grid-icon" src="img/fuel.png" alt="brandstof">
+				<div class="gridItem">
+					<img class="gridIcon" src="img/fuel.png" alt="brandstof">
 					<div id="brandstof">1000 liter</div>
 					Huidige Brandstof
 				</div>
-				<div class="grid-item">
-					<img class="grid-icon" src="img/food.png" alt="voorraad voedsel/water">
+				<div class="gridItem">
+					<img class="gridIcon" src="img/food.png" alt="voorraad voedsel/water">
 					<div id="voorraad">1000 blikken, 1000 liter</div>
 					Huidige Voorraad
 				</div>
 			</div>
 
 			<div class="graphic-container">
-				<div class="canvas-holder">
-					<h3 class="canvas-title">Snelheid</h3>
+				<div class="chartHolder">
+					<h3 class="chartTitle">Snelheid</h3>
 					<canvas id="chart1"></canvas>
+					<button id="addAreaData">Toevoegen</button>
+					<button id="removeAreaData">Verwijderen</button>
 				</div>
-				<div class="canvas-holder">
-					<h3 class="canvas-title">Zwaartekracht</h3>
+				<div class="chartHolder">
+					<h3 class="chartTitle">Zwaartekracht</h3>
 					<canvas id="chart2"></canvas>
+					<button id="addBarData">Toevoegen</button>
+					<button id="removeBarData">Verwijderen</button>
 				</div>
-				<div class="canvas-holder">
-					<h3 class="canvas-title">Brandstof</h3>
+				<div class="chartHolder">
+					<h3 class="chartTitle">Brandstof</h3>
 					<canvas id="chart3"></canvas>
+					<button id="addLineData">Toevoegen</button>
+					<button id="removeLineData">Verwijderen</button>
 				</div>
-			    <div class="canvas-holder">
-			    	<h3 class="canvas-title">Voorraad</h3>
+			    <div class="chartHolder">
+			    	<h3 class="chartTitle">Voorraad</h3>
 			        <canvas id="chart4"></canvas>
+			        <button id="addPieData">Toevoegen</button>
+					<button id="removePieData">Verwijderen</button>
 			    </div>
 			</div>
 		
