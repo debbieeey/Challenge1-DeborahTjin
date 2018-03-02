@@ -33,8 +33,8 @@ var randomScalingFactor = function() {
                 label: 'Dataset 1'
             }],
             labels: [
-                "Eten",
-                "Water"
+                "Aantal blikken eten",
+                "Aantal flessen water"
             ]
         },
         options: {
@@ -44,13 +44,13 @@ var randomScalingFactor = function() {
 
 
 //brandstof-line chart
-var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var HOURS = ["12AM", "1AM", "2AM", "3AM", "4AM", "5AM", "6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM", "9PM", "10PM", "11PM"];
         var lineData = {
             type: 'line',
             data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                labels: ["6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM"],
                 datasets: [{
-                    label: "My First dataset",
+                    label: "Aantal brandstof in liter per uur",
                     backgroundColor: window.chartColors.blue,
                     borderColor: window.chartColors.blue,
                     data: [
@@ -91,7 +91,13 @@ var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "A
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: 'Value'
+                            labelString: 'Liter'
+                        },
+                    ticks: {
+                            beginAtZero: true,
+                            steps: 10,
+                            stepValue: 5,
+                            max: 50000
                         }
                     }]
                 }
@@ -104,7 +110,7 @@ var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "A
         var barChartData = {
             labels: ["January", "February", "March", "April", "May", "June", "July"],
             datasets: [{
-                label: 'Dataset 1',
+                label: 'Zwaartekracht in ',
                 backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
                 borderColor: window.chartColors.red,
                 borderWidth: 1,
@@ -120,14 +126,14 @@ var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "A
             }]
         };
 
-//brandstof - area chart
-var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+//snelheid - area chart
+var HOURS = ["12AM", "1AM", "2AM", "3AM", "4AM", "5AM", "6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM", "9PM", "10PM", "11PM"];
         var areaData = {
             type: 'line',
             data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                labels: ["6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM"],
                 datasets: [{
-                    label: "My Third dataset",
+                    label: "Snelheid in KM per uur",
                     borderColor: window.chartColors.green,
                     backgroundColor: window.chartColors.green,
                     data: [
@@ -157,14 +163,20 @@ var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "A
                     xAxes: [{
                         scaleLabel: {
                             display: true,
-                            labelString: 'Month'
+                            labelString: 'Uur'
                         }
                     }],
                     yAxes: [{
                         stacked: true,
                         scaleLabel: {
                             display: true,
-                            labelString: 'Value'
+                            labelString: 'Kilometer'
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                            steps: 10,
+                            stepValue: 5,
+                            max: 50000
                         }
                     }]
                 }
@@ -174,8 +186,8 @@ var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "A
 
 //FUNCTIES AANROEPEN
     window.onload = function() {
-            var barData = document.getElementById("chart2").getContext("2d");
-            window.myBar = new Chart(barData, {
+            var barChart = document.getElementById("chart2").getContext("2d");
+            window.myBar = new Chart(barChart, {
                 type: 'bar',
                 data: barChartData,
                 options: {
@@ -190,22 +202,22 @@ var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "A
                 }
             });
 
-            var ctx = document.getElementById("chart3").getContext("2d");
-            window.myLine = new Chart(ctx, lineData);
+            var lineChart = document.getElementById("chart3").getContext("2d");
+            window.myLine = new Chart(lineChart, lineData);
 
-            var ctx = document.getElementById("chart4").getContext("2d");
-            window.myPie = new Chart(ctx, pieData);
+            var pieChart = document.getElementById("chart4").getContext("2d");
+            window.myPie = new Chart(pieChart, pieData);
 
-            var ctx = document.getElementById("chart1").getContext("2d");
-            window.myArea = new Chart(ctx, areaData);
+            var areaChart = document.getElementById("chart1").getContext("2d");
+            window.myArea = new Chart(areaChart, areaData);
         
 
 
 //addAreaData - chart1 snelheid
         document.getElementById('addAreaData').addEventListener('click', function() {
             if (areaData.data.datasets.length > 0) {
-                var month = MONTHS[areaData.data.labels.length % MONTHS.length];
-                areaData.data.labels.push(month);
+                var hour = HOURS[areaData.data.labels.length % HOURS.length];
+                areaData.data.labels.push(hour);
 
                 areaData.data.datasets.forEach(function(dataset) {
                     dataset.data.push(randomScalingFactor());
@@ -225,6 +237,7 @@ var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "A
 
             window.myArea.update();
         });
+        
 
 //addBarData - chart2 zwaartekracht
         document.getElementById('addBarData').addEventListener('click', function() {
