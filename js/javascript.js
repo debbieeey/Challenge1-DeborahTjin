@@ -13,54 +13,55 @@ function closeNav() {
 
 // ----------------------------------------
 
-//voorraad-pie chart
-var randomScalingFactor = function() {
-        return Math.round(Math.random() * 100);
-    };
 
-    var pieData = {
-        type: 'pie',
-        data: {
-            datasets: [{
-                data: [
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                ],
-                backgroundColor: [
-                    window.chartColors.orange,
-                    window.chartColors.green,
-                ],
-                label: 'Dataset 1'
-            }],
-            labels: [
-                "Aantal blikken eten",
-                "Aantal flessen water"
-            ]
-        },
-        options: {
-            responsive: true,
-        }
-    };
+        var randomScalingFactor = function(factor) {
+            return Math.round(Math.random() * factor);
+        };
+
+//voorraad-pie chart
+        var pieData = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        randomScalingFactor(100),
+                        randomScalingFactor(100),
+                    ],
+                    backgroundColor: [
+                        window.chartColors.orange,
+                        window.chartColors.green,
+                    ],
+                    label: 'Dataset 1'
+                }],
+                labels: [
+                    "Aantal blikken eten",
+                    "Aantal flessen water"
+                ]
+            },
+            options: {
+                responsive: true,
+            }
+        };
 
 
 //brandstof-line chart
-var HOURS = ["12AM", "1AM", "2AM", "3AM", "4AM", "5AM", "6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM", "9PM", "10PM", "11PM"];
+        var HOURS = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"];
         var lineData = {
             type: 'line',
             data: {
-                labels: ["6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM"],
+                labels: ["6", "7", "8", "9", "10", "11", "12"],
                 datasets: [{
                     label: "Aantal brandstof in liter per uur",
                     backgroundColor: window.chartColors.blue,
                     borderColor: window.chartColors.blue,
                     data: [
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor()
+                        randomScalingFactor(50000),
+                        randomScalingFactor(50000),
+                        randomScalingFactor(50000),
+                        randomScalingFactor(50000),
+                        randomScalingFactor(50000),
+                        randomScalingFactor(50000),
+                        randomScalingFactor(50000)
                     ],
                     fill: false,
                 }]
@@ -84,7 +85,7 @@ var HOURS = ["12AM", "1AM", "2AM", "3AM", "4AM", "5AM", "6AM", "7AM", "8AM", "9A
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: 'Month'
+                            labelString: 'Uur'
                         }
                     }],
                     yAxes: [{
@@ -105,102 +106,124 @@ var HOURS = ["12AM", "1AM", "2AM", "3AM", "4AM", "5AM", "6AM", "7AM", "8AM", "9A
         };
 
 //zwaartekracht-bar chart
-       var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var SECONDS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
         var color = Chart.helpers.color;
-        var barChartData = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-                label: 'Zwaartekracht in ',
-                backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-                borderColor: window.chartColors.red,
-                borderWidth: 1,
-                data: [
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor()
-                ]
-            }]
-        };
-
-//snelheid - area chart
-var HOURS = ["12AM", "1AM", "2AM", "3AM", "4AM", "5AM", "6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM", "9PM", "10PM", "11PM"];
-        var areaData = {
-            type: 'line',
+        var barData = {
+            type: 'bar',
             data: {
-                labels: ["6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM"],
+                labels: ["1", "2", "3", "4", "5", "6", "7"],
                 datasets: [{
-                    label: "Snelheid in KM per uur",
-                    borderColor: window.chartColors.green,
-                    backgroundColor: window.chartColors.green,
+                    label: 'Zwaartekracht in meter per seconde',
+                    backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+                    borderColor: window.chartColors.red,
+                    borderWidth: 1,
                     data: [
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor()
-                    ], 
-                }]
-            },
-            options: {
-                responsive: true,
-                title:{
-                    display:true,
-                    text:""
-                },
-                tooltips: {
-                    mode: 'index',
-                },
-                hover: {
-                    mode: 'index'
-                },
-                scales: {
-                    xAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Uur'
-                        }
-                    }],
-                    yAxes: [{
-                        stacked: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Kilometer'
-                        },
-                        ticks: {
-                            beginAtZero: true,
-                            steps: 10,
-                            stepValue: 5,
-                            max: 50000
-                        }
-                    }]
-                }
-            }
-        };
-
-
-//FUNCTIES AANROEPEN
-    window.onload = function() {
-            var barChart = document.getElementById("chart2").getContext("2d");
-            window.myBar = new Chart(barChart, {
-                type: 'bar',
-                data: barChartData,
+                        randomScalingFactor(1),
+                        randomScalingFactor(1),
+                        randomScalingFactor(1),
+                        randomScalingFactor(1),
+                        randomScalingFactor(1),
+                        randomScalingFactor(1),
+                        randomScalingFactor(1)
+                    ]
+                }],
                 options: {
                     responsive: true,
                     legend: {
-                        position: 'top',
+                            position: 'top',
                     },
                     title: {
                         display: true,
                         text: ''
                     }
                 }
-            });
+            }
+            
+        };
+
+        var last_speed = randomScalingFactor(50000);
+
+
+//snelheid - area chart
+        var HOURS = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"];
+        var areaData = {
+            type: 'line',
+            data: {
+                labels: ["6", "7", "8", "9", "10", "11", "12"],
+                datasets: [{
+                    label: "Snelheid in KM per uur",
+                    borderColor: window.chartColors.green,
+                    backgroundColor: window.chartColors.green,
+                    data: [
+                        randomScalingFactor(50000),
+                        randomScalingFactor(50000),
+                        randomScalingFactor(50000),
+                        randomScalingFactor(50000),
+                        randomScalingFactor(50000),
+                        randomScalingFactor(50000),
+                        last_speed
+                    ], 
+                }]
+            },
+                options: {
+                    responsive: true,
+                    title:{
+                        display:true,
+                        text:""
+                    },
+                    tooltips: {
+                        mode: 'index',
+                    },
+                    hover: {
+                        mode: 'index'
+                    },
+                    scales: {
+                        xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Uur'
+                            }
+                        }],
+                        yAxes: [{
+                            stacked: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Kilometer'
+                            },
+                            ticks: {
+                                beginAtZero: true,
+                                steps: 10,
+                                stepValue: 5,
+                                max: 50000
+                            }
+                        }]
+                    }
+                }
+        };
+
+
+//FUNCTIES AANROEPEN
+window.onload = function() {
+
+            var inner_speed = document.getElementById('inner-snelheid');
+            inner_speed.innerHTML = last_speed;
+
+            var barChart = document.getElementById("chart2").getContext("2d");
+            window.myBar = new Chart(barChart, barData);
+            // {
+            //     type: 'bar',
+            //     data: barChartData,
+            //     options: {
+            //         responsive: true,
+            //         legend: {
+            //             position: 'top',
+            //         },
+            //         title: {
+            //             display: true,
+            //             text: ''
+            //         }
+            //     }
+            //};
 
             var lineChart = document.getElementById("chart3").getContext("2d");
             window.myLine = new Chart(lineChart, lineData);
@@ -219,9 +242,14 @@ var HOURS = ["12AM", "1AM", "2AM", "3AM", "4AM", "5AM", "6AM", "7AM", "8AM", "9A
                 var hour = HOURS[areaData.data.labels.length % HOURS.length];
                 areaData.data.labels.push(hour);
 
+                var new_speed;
+
                 areaData.data.datasets.forEach(function(dataset) {
-                    dataset.data.push(randomScalingFactor());
+                    new_speed = randomScalingFactor(50000);
+                    dataset.data.push(new_speed);
                 });
+
+                inner_speed.innerHTML = new_speed;
 
                 window.myArea.update();
             }
@@ -247,7 +275,7 @@ var HOURS = ["12AM", "1AM", "2AM", "3AM", "4AM", "5AM", "6AM", "7AM", "8AM", "9A
 
                 for (var index = 0; index < barChartData.datasets.length; ++index) {
                     //window.myBar.addData(randomScalingFactor(), index);
-                    barChartData.datasets[index].data.push(randomScalingFactor());
+                    barChartData.datasets[index].data.push(randomScalingFactor(1));
                 }
 
                 window.myBar.update();
@@ -273,7 +301,7 @@ var HOURS = ["12AM", "1AM", "2AM", "3AM", "4AM", "5AM", "6AM", "7AM", "8AM", "9A
                 lineData.data.labels.push(month);
 
                 lineData.data.datasets.forEach(function(dataset) {
-                    dataset.data.push(randomScalingFactor());
+                    dataset.data.push(randomScalingFactor(50000));
                 });
 
                 window.myLine.update();
