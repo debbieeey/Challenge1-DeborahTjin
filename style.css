@@ -27,6 +27,11 @@ canvas {
 	margin: 10px;
 }
 
+.currentData {
+	font-size: 150%;
+	font-weight: bold;
+}
+
 /*---Ruimte waar de datavisualisaties in zitten---*/
 .chartHolder {
 	border: solid 1px #eeeeee;
@@ -40,13 +45,14 @@ canvas {
 }
 
 .gridIcon {
-  width: 20%;
+  width: 30%;
 }
 
 button {
   align-items: center;
 }
 
+/*-------------------MEDIA QUERIES	
 /*mobile scherm*/
 @media only screen and (max-width: 320px) {
 	

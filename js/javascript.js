@@ -1,4 +1,5 @@
 
+//Sidemenu
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
@@ -13,10 +14,14 @@ function closeNav() {
 
 // ----------------------------------------
 
-
+/*De functie randomScalingFactor zorgt ervoor dat die de som Math.round terug geeft. 
+Deze functie heeft als parameter 'factor'. Dit geeft een maxium aantal waar in 
+de chart een random getal uit kan halen.
+*/
         var randomScalingFactor = function(factor) {
             return Math.round(Math.random() * factor);
         };
+
 
 //voorraad-pie chart
         var pieData = {
@@ -46,6 +51,7 @@ function closeNav() {
 
 //brandstof-line chart
         var HOURS = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"];
+        var last_fuel = randomScalingFactor(50000);
         var lineData = {
             type: 'line',
             data: {
@@ -107,6 +113,7 @@ function closeNav() {
 
 //zwaartekracht-bar chart
         var SECONDS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+        var last_gravity = randomScalingFactor(100);
         var color = Chart.helpers.color;
         var barData = {
             type: 'bar',
@@ -118,13 +125,13 @@ function closeNav() {
                     borderColor: window.chartColors.red,
                     borderWidth: 1,
                     data: [
-                        randomScalingFactor(1),
-                        randomScalingFactor(1),
-                        randomScalingFactor(1),
-                        randomScalingFactor(1),
-                        randomScalingFactor(1),
-                        randomScalingFactor(1),
-                        randomScalingFactor(1)
+                        randomScalingFactor(100),
+                        randomScalingFactor(100),
+                        randomScalingFactor(100),
+                        randomScalingFactor(100),
+                        randomScalingFactor(100),
+                        randomScalingFactor(100),
+                        randomScalingFactor(100)
                     ]
                 }],
                 options: {
@@ -141,11 +148,12 @@ function closeNav() {
             
         };
 
-        var last_speed = randomScalingFactor(50000);
+        
 
 
 //snelheid - area chart
         var HOURS = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"];
+        var last_speed = randomScalingFactor(50000);
         var areaData = {
             type: 'line',
             data: {
@@ -160,8 +168,7 @@ function closeNav() {
                         randomScalingFactor(50000),
                         randomScalingFactor(50000),
                         randomScalingFactor(50000),
-                        randomScalingFactor(50000),
-                        last_speed
+                        randomScalingFactor(50000),    
                     ], 
                 }]
             },
@@ -204,10 +211,6 @@ function closeNav() {
 
 //FUNCTIES AANROEPEN
 window.onload = function() {
-
-            var inner_speed = document.getElementById('inner-snelheid');
-            inner_speed.innerHTML = last_speed;
-
             var barChart = document.getElementById("chart2").getContext("2d");
             window.myBar = new Chart(barChart, barData);
             // {
@@ -237,19 +240,22 @@ window.onload = function() {
 
 
 //addAreaData - chart1 snelheid
+        var inner_speed = document.getElementById('inner-speed');
+            innerSpeed.innerHTML = last_speed;
+
         document.getElementById('addAreaData').addEventListener('click', function() {
             if (areaData.data.datasets.length > 0) {
                 var hour = HOURS[areaData.data.labels.length % HOURS.length];
                 areaData.data.labels.push(hour);
 
-                var new_speed;
+                var newSpeed;
 
                 areaData.data.datasets.forEach(function(dataset) {
-                    new_speed = randomScalingFactor(50000);
-                    dataset.data.push(new_speed);
+                    newSpeed = randomScalingFactor(50000);
+                    dataset.data.push(newSpeed);
                 });
 
-                inner_speed.innerHTML = new_speed;
+                innerSpeed.innerHTML = newSpeed;
 
                 window.myArea.update();
             }
@@ -268,15 +274,23 @@ window.onload = function() {
         
 
 //addBarData - chart2 zwaartekracht
+        var inner_gravity = document.getElementById('innerGravity');
+            innerGravity.innerHTML = last_gravity;
+
         document.getElementById('addBarData').addEventListener('click', function() {
-            if (barChartData.datasets.length > 0) {
-                var month = MONTHS[barChartData.labels.length % MONTHS.length];
-                barChartData.labels.push(month);
+            if (barData.datasets.length > 0) {
+                var second = SECONDS[barData.data.labels.length % SECONDS.length];
+                barData.labels.push(second);
+
+                var newGravity;
 
                 for (var index = 0; index < barChartData.datasets.length; ++index) {
-                    //window.myBar.addData(randomScalingFactor(), index);
-                    barChartData.datasets[index].data.push(randomScalingFactor(1));
+                    barChartData.datasets[index].data.push(randomScalingFactor(100));
+                    // newGravity.data.push(randomScalingFactor(100));
+                    // dataset.data.push(newGravity);
                 }
+
+                innerGravity.innerHTML = newGravity;
 
                 window.myBar.update();
             }
@@ -295,14 +309,22 @@ window.onload = function() {
         });
 
 //addLineData - chart3 brandstof
+        var inner_fuel = document.getElementById('innerFuel');
+            innerFuel.innerHTML = last_fuel;
+
         document.getElementById('addLineData').addEventListener('click', function() {
             if (lineData.data.datasets.length > 0) {
-                var month = MONTHS[lineData.data.labels.length % MONTHS.length];
-                lineData.data.labels.push(month);
+                var hour = HOURS[lineData.data.labels.length % HOURS.length];
+                lineData.data.labels.push(hour);
+
+                var newFuel;
 
                 lineData.data.datasets.forEach(function(dataset) {
-                    dataset.data.push(randomScalingFactor(50000));
+                    newFuel = (randomScalingFactor(50000));
+                    dataset.data.push(newFuel);
                 });
+
+                innerFuel.innerHTML = newFuel;
 
                 window.myLine.update();
             }
