@@ -23,7 +23,7 @@ de chart een random getal uit kan halen.
         };
 
 
-//voorraad-pie chart
+//voorraad-pie chart. Data om de pie chart te kunnen tekenen
         var pieData = {
             type: 'pie',
             data: {
@@ -49,9 +49,9 @@ de chart een random getal uit kan halen.
         };
 
 
-//brandstof-line chart
+//brandstof-line chart. Data om de line chart te kunnen tekenen
         var HOURS = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"];
-        var last_fuel = randomScalingFactor(50000);
+        var last_fuel = randomScalingFactor(50000); //geeft de laatste brandstof in de chart aan 
         var lineData = {
             type: 'line',
             data: {
@@ -67,7 +67,7 @@ de chart een random getal uit kan halen.
                         randomScalingFactor(50000),
                         randomScalingFactor(50000),
                         randomScalingFactor(50000),
-                        randomScalingFactor(50000)
+                        last_fuel
                     ],
                     fill: false,
                 }]
@@ -111,9 +111,9 @@ de chart een random getal uit kan halen.
             }
         };
 
-//zwaartekracht-bar chart
+//zwaartekracht-bar chart. Data om de bar chart te kunnen tekenen
         var SECONDS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
-        var last_gravity = randomScalingFactor(100);
+        var last_gravity = randomScalingFactor(100);//geeft de laatste zwaartekracht in de chart aan
         var color = Chart.helpers.color;
         var barData = {
             type: 'bar',
@@ -131,7 +131,7 @@ de chart een random getal uit kan halen.
                         randomScalingFactor(100),
                         randomScalingFactor(100),
                         randomScalingFactor(100),
-                        randomScalingFactor(100)
+                        last_gravity
                     ]
                 }],
                 options: {
@@ -151,9 +151,9 @@ de chart een random getal uit kan halen.
         
 
 
-//snelheid - area chart
+//snelheid - area chart. Data om de area chart te kunnen tekenen
         var HOURS = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"];
-        var last_speed = randomScalingFactor(50000);
+        var last_speed = randomScalingFactor(50000); //geeft de laatste snelheid in de chart aan
         var areaData = {
             type: 'line',
             data: {
@@ -168,7 +168,8 @@ de chart een random getal uit kan halen.
                         randomScalingFactor(50000),
                         randomScalingFactor(50000),
                         randomScalingFactor(50000),
-                        randomScalingFactor(50000),    
+                        randomScalingFactor(50000),
+                        last_speed    
                     ], 
                 }]
             },
@@ -209,24 +210,11 @@ de chart een random getal uit kan halen.
         };
 
 
-//FUNCTIES AANROEPEN
+//FUNCTIES AANROEPEN. 
+//De charts worden getekend
 window.onload = function() {
             var barChart = document.getElementById("chart2").getContext("2d");
             window.myBar = new Chart(barChart, barData);
-            // {
-            //     type: 'bar',
-            //     data: barChartData,
-            //     options: {
-            //         responsive: true,
-            //         legend: {
-            //             position: 'top',
-            //         },
-            //         title: {
-            //             display: true,
-            //             text: ''
-            //         }
-            //     }
-            //};
 
             var lineChart = document.getElementById("chart3").getContext("2d");
             window.myLine = new Chart(lineChart, lineData);
@@ -240,6 +228,9 @@ window.onload = function() {
 
 
 //addAreaData - chart1 snelheid
+//Een button om data aan de area chart toe te voegen
+//Wanneer er data wordt toegevoegd, zal de id innnerSpeed ook veranderen. Deze geeft dan de 
+//huidige snelheid aan. 
         var inner_speed = document.getElementById('inner-speed');
             innerSpeed.innerHTML = last_speed;
 
@@ -278,17 +269,21 @@ window.onload = function() {
             innerGravity.innerHTML = last_gravity;
 
         document.getElementById('addBarData').addEventListener('click', function() {
-            if (barData.datasets.length > 0) {
+            if (barData.data.datasets.length > 0) {
                 var second = SECONDS[barData.data.labels.length % SECONDS.length];
-                barData.labels.push(second);
+                barData.data.labels.push(second);
 
                 var newGravity;
 
-                for (var index = 0; index < barChartData.datasets.length; ++index) {
-                    barChartData.datasets[index].data.push(randomScalingFactor(100));
-                    // newGravity.data.push(randomScalingFactor(100));
-                    // dataset.data.push(newGravity);
-                }
+                // for (var index = 0; index < barData.data.datasets.length; ++index) {
+                //     barData.data.datasets[index].data.push(randomScalingFactor(100));
+                //     newGravity = randomScalingFactor(100);
+                //     dataset.data.push(newGravity);
+                // }
+                barData.data.datasets.forEach(function(dataset) {
+                    newGravity = randomScalingFactor(100);
+                    dataset.data.push(newGravity);
+                });
 
                 innerGravity.innerHTML = newGravity;
 

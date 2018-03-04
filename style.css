@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+@font-face {
+	font-family: Guardians;
+	src: url(fonts/Guardians.ttf);
+}
 body {
 	font-family: 'Roboto', sans-serif;
 	margin: 0;
@@ -8,13 +12,14 @@ body {
 
 .navBar {
   background-color: #212121;
-  height: 50px;
+  height: 80px;
   color: #fff;
   text-align: center;
 }
 .title {
 	text-align: center;
 	font-size: 150%;
+	font-family: Guardians;
 }
 
 canvas {
