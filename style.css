@@ -47,6 +47,7 @@ canvas {
 	margin-top: 10px;
 	padding: 5px;
 	background-color: #fff;
+	opacity: 0.9;
 }
 
 .chartTitle {
@@ -65,12 +66,17 @@ button {
 	background-color: #008AC2;
 	color: #fff;
 	padding: 10px;
+	border:none;
+	text-align: center;
+	border-radius: 2px;
 }
 
 .removeButton {
 	border-color: #008AC2;
 	background-color: #fff;
 	padding: 10px;
+	text-align: center;
+	border-radius: 2px;
 }
 
 /*-------------------MEDIA QUERIES	
@@ -139,7 +145,7 @@ button {
 	}
 
 	.gridItem {
-		background-color: #eee;
+		background-color: rgba(255, 255, 255, 0.8);
   		border: 1px solid #eee;
   		padding: 20px;
   		text-align: center;
