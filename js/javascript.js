@@ -1,19 +1,4 @@
 
-//Sidemenu
-/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("wrapper").style.marginLeft = "250px";
-}
-
-/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("wrapper").style.marginLeft = "0";
-}
-
-// ----------------------------------------
-
 /*De functie randomScalingFactor zorgt ervoor dat die de som Math.round terug geeft. 
 Deze functie heeft als parameter 'factor'. Dit geeft een maxium aantal waar in 
 de chart een random getal uit kan halen.
@@ -33,7 +18,7 @@ de chart een random getal uit kan halen.
                         randomScalingFactor(100),
                     ],
                     backgroundColor: [
-                        window.chartColors.orange,
+                        window.chartColors.grey,
                         window.chartColors.green,
                     ],
                     label: 'Dataset 1'
@@ -58,8 +43,8 @@ de chart een random getal uit kan halen.
                 labels: ["6", "7", "8", "9", "10", "11", "12"],
                 datasets: [{
                     label: "Aantal brandstof in liter per uur",
-                    backgroundColor: window.chartColors.blue,
-                    borderColor: window.chartColors.blue,
+                    backgroundColor: window.chartColors.purple,
+                    borderColor: window.chartColors.purple,
                     data: [
                         randomScalingFactor(50000),
                         randomScalingFactor(50000),
@@ -160,8 +145,8 @@ de chart een random getal uit kan halen.
                 labels: ["6", "7", "8", "9", "10", "11", "12"],
                 datasets: [{
                     label: "Snelheid in KM per uur",
-                    borderColor: window.chartColors.green,
-                    backgroundColor: window.chartColors.green,
+                    borderColor: window.chartColors.darkGreen,
+                    backgroundColor: window.chartColors.darkGreen,
                     data: [
                         randomScalingFactor(50000),
                         randomScalingFactor(50000),

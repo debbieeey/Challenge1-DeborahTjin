@@ -3,7 +3,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="UTF-8">
-		<title>Challenge 1: Elon Musk Space X</title>
+		<title>SpaceX dasboard door DeborahTjin</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script type="text/javascript" src="js/utils.js"></script>
 		<script type="text/javascript" src="js/Chart.min.js"></script>
@@ -12,24 +12,11 @@
 	</head>
 
 	<body>
-		
-	<!-- 		<div id="mySidenav" class="sidenav">
-			  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			  <a href="#">Dashboard</a>
-			  <a href="#">Over SpaceX</a>
-			  <a href="#">Contact</a>
-			</div>
-
 			<div class="navBar">
-				<span onclick="openNav()">Menu</span>
-			</div> -->
-			
-			<div class="navBar">
-				<!-- <h1>SpaceX</h1> -->
 				<div class="title">SpaceX</div>
 			</div>
 
-			<h2 id="dashboardTitle">Dashboard</h2>
+			<!-- <h2 id="dashboardTitle">Dashboard</h2> -->
 		
 			<div class="gridContainer">
 				<div class="gridItem">
@@ -58,26 +45,26 @@
 				<div class="chartHolder">
 					<h3 class="chartTitle">Snelheid</h3>
 					<canvas id="chart1"></canvas>
-					<button id="addAreaData">Toevoegen</button>
-					<button id="removeAreaData">Verwijderen</button>
+					<button class="addButton" id="addAreaData">Toevoegen</button>
+					<button class="removeButton" id="removeAreaData">Verwijderen</button>
 				</div>
 				<div class="chartHolder">
 					<h3 class="chartTitle">Zwaartekracht</h3>
 					<canvas id="chart2"></canvas>
-					<button id="addBarData">Toevoegen</button>
-					<button id="removeBarData">Verwijderen</button>
+					<button class="addButton" id="addBarData">Toevoegen</button>
+					<button class="removeButton" id="removeBarData">Verwijderen</button>
 				</div>
 				<div class="chartHolder">
 					<h3 class="chartTitle">Brandstof</h3>
 					<canvas id="chart3"></canvas>
-					<button id="addLineData">Toevoegen</button>
-					<button id="removeLineData">Verwijderen</button>
+					<button class="addButton" id="addLineData">Toevoegen</button>
+					<button class="removeButton" id="removeLineData">Verwijderen</button>
 				</div>
 			    <div class="chartHolder">
 			    	<h3 class="chartTitle">Voorraad</h3>
 			        <canvas id="chart4"></canvas>
-			        <button id="addPieData">Toevoegen</button>
-					<button id="removePieData">Verwijderen</button>
+			        <button class="addButton" id="addPieData">Toevoegen</button>
+					<button class="removeButton" id="removePieData">Verwijderen</button>
 			    </div>
 			</div>
 		

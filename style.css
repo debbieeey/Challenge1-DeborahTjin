@@ -20,6 +20,7 @@ body {
 	text-align: center;
 	font-size: 150%;
 	font-family: Guardians;
+	padding: 20px;
 }
 
 canvas {
@@ -55,6 +56,18 @@ canvas {
 
 button {
   align-items: center;
+}
+
+.addButton {
+	background-color: #008AC2;
+	color: #fff;
+	padding: 10px;
+}
+
+.removeButton {
+	border-color: #008AC2;
+	background-color: #fff;
+	padding: 10px;
 }
 
 /*-------------------MEDIA QUERIES	
