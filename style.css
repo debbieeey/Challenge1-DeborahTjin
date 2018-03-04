@@ -4,6 +4,12 @@
 	font-family: Guardians;
 	src: url(fonts/Guardians.ttf);
 }
+
+@font-face {
+	font-family: Continuum bold;
+	src: url(fonts/contb.ttf);
+}
+
 body {
 	font-family: 'Roboto', sans-serif;
 	margin: 0;
@@ -41,6 +47,11 @@ canvas {
 	font-weight: bold;
 }
 
+#innerSpeed, #innerGravity, #innerFuel, #innerFood, #innerWater, 
+#speed, #gravity, #fuel, #supplies{
+	font-family: Continuum bold;
+}
+
 /*---Ruimte waar de datavisualisaties in zitten---*/
 .chartHolder {
 	border: solid 1px #eeeeee;
@@ -71,10 +82,28 @@ button {
 	border-radius: 2px;
 }
 
+.addButton:hover {
+	background-color: #002A58;
+	color: #fff;
+	padding: 10px;
+	border:none;
+	text-align: center;
+	border-radius: 2px;
+}
+
 .removeButton {
 	border-color: #008AC2;
 	background-color: #fff;
 	padding: 10px;
+	text-align: center;
+	border-radius: 2px;
+}
+
+.removeButton:hover {
+	background-color: #008AC2;
+	color: #fff;
+	padding: 10px;
+	border:none;
 	text-align: center;
 	border-radius: 2px;
 }

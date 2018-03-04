@@ -127,6 +127,20 @@ de chart een random getal uit kan halen.
                     title: {
                         display: true,
                         text: ''
+                    },
+                    scales: {
+                        xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Seconde'
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Meter'
+                            }
+                        }]
                     }
                 }
             }
@@ -216,8 +230,8 @@ window.onload = function() {
 //Een button om data aan de area chart toe te voegen
 //Wanneer er data wordt toegevoegd, zal de id innnerSpeed ook veranderen. Deze geeft dan de 
 //huidige snelheid aan. 
-        var inner_speed = document.getElementById('inner-speed');
-            innerSpeed.innerHTML = last_speed;
+        var inner_speed = document.getElementById('innerSpeed'); //var inner_speed staat gelijk aan id innerSpeed
+            innerSpeed.innerHTML = last_speed;//de id innerSpeed wordt uit de HTML gehaald en gelijk gezet met de var last_speed. Geeft huidige snelheid aan 
 
         document.getElementById('addAreaData').addEventListener('click', function() {
             if (areaData.data.datasets.length > 0) {
@@ -233,11 +247,13 @@ window.onload = function() {
 
                 innerSpeed.innerHTML = newSpeed;
 
+                //chart wordt opnieuw getekend
                 window.myArea.update();
             }
         });
 
 //removeAreaData - chart1 snelheid
+//Een button om data uit de chart te verwijderen.
         document.getElementById('removeAreaData').addEventListener('click', function() {
             areaData.data.labels.splice(-1, 1); // remove the label first
 
@@ -250,6 +266,9 @@ window.onload = function() {
         
 
 //addBarData - chart2 zwaartekracht
+//Een button om data aan de bar chart toe te voegen
+//Wanneer er data wordt toegevoegd, zal de id innnerGravity ook veranderen. Deze geeft dan de 
+//huidige zwaartekracht aan.
         var inner_gravity = document.getElementById('innerGravity');
             innerGravity.innerHTML = last_gravity;
 
@@ -260,11 +279,6 @@ window.onload = function() {
 
                 var newGravity;
 
-                // for (var index = 0; index < barData.data.datasets.length; ++index) {
-                //     barData.data.datasets[index].data.push(randomScalingFactor(100));
-                //     newGravity = randomScalingFactor(100);
-                //     dataset.data.push(newGravity);
-                // }
                 barData.data.datasets.forEach(function(dataset) {
                     newGravity = randomScalingFactor(100);
                     dataset.data.push(newGravity);
@@ -279,7 +293,7 @@ window.onload = function() {
 
 //removeBarData - chart2 zwaartekracht
         document.getElementById('removeBarData').addEventListener('click', function() {
-            barChartData.labels.splice(-1, 1); // remove the label first
+            barChartData.labels.splice(-1, 1); 
 
             barChartData.datasets.forEach(function(dataset, datasetIndex) {
                 dataset.data.pop();
@@ -337,6 +351,7 @@ window.onload = function() {
             window.myPie.update();
         }
     });
+
 //removePieData - chart4 voorraad eten en water
     document.getElementById('removePieData').addEventListener('click', function() {
         pieData.data.labels.splice(-1, 1); // remove the label first
